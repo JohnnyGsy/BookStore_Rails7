@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title BookStore
+    %meta{charset: "UTF-8"}
+    %meta{name: "viewport", content: "width=device-width"}
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+  %body
+    = render  'partials/header'
+    = yield
+    = render  'partials/footer'
