@@ -27,7 +27,6 @@ commands:
       - run:
           name: Fasterer
           command: bundle exec fasterer
-    parallelism: 3
   test:
     docker:
       - image: cimg/ruby:2.7.3-node
@@ -59,8 +58,7 @@ commands:
       - run:
           name: run specs
           command: bundle exec rspec
-    parallelism: 4
-setup_environment:
+  setup_environment:
     steps:
       - checkout
       - restore_cache:
@@ -86,6 +84,7 @@ jobs:
     steps:
       - setup_environment
       - test
+
 workflows:
   version: 2
   lint_and_test:
