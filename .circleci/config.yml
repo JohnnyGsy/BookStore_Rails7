@@ -5,10 +5,10 @@ orbs:
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.0.1
 
-jobs:
+commands:
   lintering:
     docker:
-      - image: cimg/ruby:2.7.3-node
+      - image: cimg/ruby:2.7-node
     steps:
       - checkout
       - ruby/install-deps
@@ -32,12 +32,12 @@ jobs:
         environment:
           POSTGRES_USER: johnnyGsy
           POSTGRES_DB: rails_7_bookstore_test
-          POSTGRES_PASSWORD: 'password'
+          POSTGRES_PASSWORD: "password"
     environment:
       BUNDLE_JOBS: "3"
       BUNDLE_RETRY: "3"
       PGHOST: 127.0.0.1
-      BOOK_STORE_DATABASE_PASSWORD: "book_store"
+      BOOK_STORE_DATABASE_PASSWORD: "password"
       RAILS_ENV: test
     steps:
       - checkout
@@ -54,13 +54,35 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
-      - run:
           name: run specs
           command: bundle exec rspec
     parallelism: 4
-
+setup_environment:
+    steps:
+      - checkout
+      - restore_cache:
+          key: *bundle_cache
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle_cache
+          paths:
+            - vendor/bundle
+      - run:
+          name: Set up DB
+          command: |
+            bundle exec rails db:create
+            bundle exec rails db:schema:load --trace
+jobs:
+  lintering:
+    executor: default
+    steps:
+      - setup_environment
+      - lintering
+  run_specs:
+    executor: default
+    steps:
+      - setup_environment
+      - test
 workflows:
   version: 2
   lint_and_test:

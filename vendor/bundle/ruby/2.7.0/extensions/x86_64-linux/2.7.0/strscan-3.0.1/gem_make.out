@@ -1,16 +1,16 @@
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
-/usr/share/rvm/rubies/ruby-2.7.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20220411-112785-1gv9wp.rb extconf.rb
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+/usr/share/rvm/rubies/ruby-2.7.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20220415-22310-heb02i.rb extconf.rb
 checking for onig_region_memsize() in ruby.h... yes
 creating Makefile
 
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
 make "DESTDIR=" clean
 
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
 make "DESTDIR="
 compiling strscan.c
 linking shared-object strscan.so
 
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/strscan-3.0.1/ext/strscan
 make "DESTDIR=" install
-/usr/bin/install -m 0755 strscan.so ./.gem.20220411-112785-183y5pv
+/usr/bin/install -m 0755 strscan.so ./.gem.20220415-22310-194i1m7

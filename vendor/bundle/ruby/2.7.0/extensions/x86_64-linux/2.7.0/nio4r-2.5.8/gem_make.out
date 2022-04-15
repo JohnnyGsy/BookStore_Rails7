@@ -1,5 +1,5 @@
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
-/usr/share/rvm/rubies/ruby-2.7.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20220411-112785-15stqnz.rb extconf.rb
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+/usr/share/rvm/rubies/ruby-2.7.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20220415-22310-1oytoa8.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... yes
 checking for linux/io_uring.h... yes
@@ -11,10 +11,10 @@ checking for port_event_t in port.h... no
 checking for sys/resource.h... yes
 creating Makefile
 
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
 make "DESTDIR=" clean
 
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
 make "DESTDIR="
 compiling bytebuffer.c
 compiling monitor.c
@@ -109,6 +109,6 @@ cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
 cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
 linking shared-object nio4r_ext.so
 
-current directory: /home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
+current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/nio4r-2.5.8/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -m 0755 nio4r_ext.so ./.gem.20220411-112785-1tf825k
+/usr/bin/install -m 0755 nio4r_ext.so ./.gem.20220415-22310-c3olmz

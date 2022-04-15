@@ -74,8 +74,8 @@ checked program was:
 /* end */
 
 "gcc -o conftest -I/usr/share/rvm/rubies/ruby-2.7.3/include/ruby-2.7.0/x86_64-linux -I/usr/share/rvm/rubies/ruby-2.7.3/include/ruby-2.7.0/ruby/backward -I/usr/share/rvm/rubies/ruby-2.7.3/include/ruby-2.7.0 -I.    -O3 -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wmisleading-indentation -Wpointer-arith -Wwrite-strings -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable  -fPIC conftest.c  -L. -L/usr/share/rvm/rubies/ruby-2.7.3/lib -Wl,-rpath,/usr/share/rvm/rubies/ruby-2.7.3/lib -L. -fstack-protector-strong -rdynamic -Wl,-export-dynamic     -Wl,-rpath,'/../lib' -Wl,-rpath,'/../lib' -lruby  -lm   -lc"
-/usr/bin/ld: /tmp/cck6BNE9.o: in function `t':
-/home/van/Downloads/rails_7_test-main/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.1/ext/msgpack/conftest.c:17: undefined reference to `rb_enc_interned_str'
+/usr/bin/ld: /tmp/ccDMIeMa.o: in function `t':
+/home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/msgpack-1.5.1/ext/msgpack/conftest.c:17: undefined reference to `rb_enc_interned_str'
 collect2: error: ld returned 1 exit status
 checked program was:
 /* begin */
