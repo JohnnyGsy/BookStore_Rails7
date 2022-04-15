@@ -4,6 +4,9 @@ orbs:
   ruby: circleci/ruby@1.0
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.0.1
+  
+caches: 
+  - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
 
 commands:
   lintering:
