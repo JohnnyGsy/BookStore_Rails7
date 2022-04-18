@@ -30,6 +30,7 @@ end
 group :development do
   gem 'brakeman'
   gem 'bundler-audit'
+  gem 'fasterer'
   gem 'lefthook'
   gem 'rack-mini-profiler'
   gem 'rubocop-performance', require: false
