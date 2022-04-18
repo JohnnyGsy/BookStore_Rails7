@@ -1,12 +1,10 @@
 version: 2.1
 
 orbs:
-  ruby: circleci/ruby@1.0
-  node: circleci/node@2
-  browser-tools: circleci/browser-tools@1.0.1
+  ruby: circleci/ruby@1.7.1
+  node: circleci/node@5.0.2
+  browser-tools: circleci/browser-tools@1.2.5
 
-caches:
-  - &bundle_cache gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
 jobs:
   lintering:
     docker:
@@ -14,12 +12,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: *bundle_cache
-      - run: bundle install 
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
       - save_cache:
-          key: *bundle_cache
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - run: bundle install 
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
@@ -46,12 +44,12 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: *bundle_cache
-      - run: bundle install 
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
       - save_cache:
-          key: *bundle_cache
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - run: bundle install 
       - ruby/install-deps
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
