@@ -16,7 +16,7 @@ jobs:
       - checkout
       - restore_cache:
           key: *bundle_cache
-      - run: bundle install --path vendor/bundle
+      - run: bundle install 
       - save_cache:
           key: *bundle_cache
           paths:
@@ -48,7 +48,7 @@ jobs:
       - checkout
       - restore_cache:
           key: *bundle_cache
-      - run: bundle install --path vendor/bundle
+      - run: bundle install 
       - save_cache:
           key: *bundle_cache
           paths:
