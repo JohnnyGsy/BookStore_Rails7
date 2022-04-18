@@ -6,8 +6,7 @@ orbs:
   browser-tools: circleci/browser-tools@1.0.1
 
 caches:
-  - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
-
+  - &bundle_cache gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
 jobs:
   lintering:
     docker:
