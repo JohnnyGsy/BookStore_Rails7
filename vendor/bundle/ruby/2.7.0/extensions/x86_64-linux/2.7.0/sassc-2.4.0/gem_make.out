@@ -1,5 +1,5 @@
 current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-/usr/share/rvm/rubies/ruby-2.7.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20220415-22310-1i393qk.rb extconf.rb
+/usr/share/rvm/rubies/ruby-2.7.3/bin/ruby -I /usr/share/rvm/rubies/ruby-2.7.3/lib/ruby/2.7.0 -r ./siteconf20220418-56040-10n4jg9.rb extconf.rb
 creating Makefile
 
 current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.so
 
 current directory: /home/van/Rails7_BookStore/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
 make "DESTDIR=" install
-/usr/bin/install -m 0755 libsass.so ./.gem.20220415-22310-l45xtj/sassc
+/usr/bin/install -m 0755 libsass.so ./.gem.20220418-56040-197a7ar/sassc
