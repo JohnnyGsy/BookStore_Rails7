@@ -5,12 +5,22 @@ orbs:
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.0.1
 
+caches:
+  - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
+
 jobs:
   lintering:
     docker:
       - image: cimg/ruby:2.7.3-node
     steps:
       - checkout
+      - restore_cache:
+          key: *bundle_cache
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle_cache
+          paths:
+            - vendor/bundle
       - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
@@ -36,6 +46,13 @@ jobs:
       RAILS_ENV: test
     steps:
       - checkout
+      - restore_cache:
+          key: *bundle_cache
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle_cache
+          paths:
+            - vendor/bundle
       - ruby/install-deps
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
