@@ -4,9 +4,6 @@ orbs:
   ruby: circleci/ruby@1.0
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.0.1
-  
-caches: 
-  - &bundle_cache v1-repo-{{ checksum "Gemfile.lock" }}
 
 jobs:
   lintering:
@@ -21,17 +18,8 @@ jobs:
       - run:
           name: rubocop
           command: bundle exec rubocop
-<<<<<<< HEAD
           
 
-=======
-      - run:
-          name: Brakeman
-          command: bundle exec brakeman
-      - run:
-          name: Fasterer
-          command: bundle exec fasterer
->>>>>>> 6ba4a3a99911885dad67f645e01b0e05940bbee3
   test:
     docker:
       - image: cimg/ruby:2.7.3-node
@@ -66,36 +54,7 @@ jobs:
       - run:
           name: run specs
           command: bundle exec rspec
-<<<<<<< HEAD
     parallelism: 4
-=======
-  setup_environment:
-    steps:
-      - checkout
-      - restore_cache:
-          key: bundle_cache
-      - run: bundle install --path vendor/bundle
-      - save_cache:
-          key: bundle_cache
-          paths:
-            - vendor/bundle
-      - run:
-          name: Set up DB
-          command: |
-            bundle exec rails db:create
-            bundle exec rails db:schema:load --trace
-jobs:
-  lintering:
-    executor: default
-    steps:
-      - setup_environment
-      - lintering
-  run_specs:
-    executor: default
-    steps:
-      - setup_environment
-      - test
->>>>>>> 6ba4a3a99911885dad67f645e01b0e05940bbee3
 
 workflows:
   version: 2
