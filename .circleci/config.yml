@@ -18,7 +18,6 @@ jobs:
           paths:
             - vendor/bundle
       - run: bundle install 
-      - ruby/install-deps
       - node/install-packages:
           pkg-manager: yarn
           cache-key: "yarn.lock"
@@ -50,7 +49,6 @@ jobs:
           paths:
             - vendor/bundle
       - run: bundle install 
-      - ruby/install-deps
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
       - run:
