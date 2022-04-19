@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.7.3'
 
 gem 'aasm', '5.2.0'
-gem 'bootsnap','1.11.1', require: false
+gem 'bootsnap', '1.11.1', require: false
 gem 'bootstrap-sass', '3.4.1'
 gem 'draper', '4.0.2'
 gem 'faker', '2.20.0'
@@ -31,6 +31,7 @@ group :development do
   gem 'brakeman'
   gem 'bundler-audit', '0.9.0.1'
   gem 'fasterer', '0.9.0'
+  gem 'gemsurance', '0.10.0'
   gem 'lefthook', '0.7.7'
   gem 'rack-mini-profiler', '3.0.0'
   gem 'rubocop-performance', '1.13.3', require: false
@@ -39,14 +40,13 @@ group :development do
   gem 'solargraph', '0.44.3'
   gem 'spring', '4.0.0'
   gem 'web-console', '4.2.0'
-  gem 'gemsurance', '0.10.0'
 end
 
 group :test do
   gem 'capybara', '	3.36.0'
+  gem 'database_cleaner', '2.0.1'
   gem 'selenium-webdriver', '4.1.0'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '0.21.2', require: false
   gem 'webdrivers', '5.0.0'
-  gem 'database_cleaner', '2.0.1'
 end

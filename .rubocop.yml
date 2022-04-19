@@ -12,6 +12,7 @@ AllCops:
     - 'vendor/**/*'
     - 'node_modules/**/*'
     - 'config/**/*'
+    - 'tmp/**/*'
 
 Layout/LineLength:
   Max: 120
