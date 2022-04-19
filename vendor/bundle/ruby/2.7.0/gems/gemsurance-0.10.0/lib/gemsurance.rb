@@ -1,0 +1,13 @@
+require 'bundler'
+require 'git'
+require 'erb'
+require 'gems'
+
+require 'gemsurance/gem_info_retriever'
+require 'gemsurance/formatters/base'
+require 'gemsurance/formatters/csv'
+require 'gemsurance/formatters/html'
+require 'gemsurance/formatters/yml'
+require 'gemsurance/runner'
+require 'gemsurance/version'
+require 'gemsurance/vulnerability'
