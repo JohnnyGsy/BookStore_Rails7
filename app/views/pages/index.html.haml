@@ -1,5 +1,6 @@
 %body
   %main.container
+<<<<<<< HEAD
     #slider.carousel.slide{'data-ride': "carousel"}
       %ol.carousel-indicators
         %li.active{'data-target': "#slider", 'data-slide-to': "0"}
@@ -47,12 +48,16 @@
       %a.right.carousel-control{href: "#slider", role: "button", 'data-slide': "next"}
         %span.icon-next{'aria-hidden': "true"}
         %span.sr-only Next
+=======
+    =render partial: 'pages/partials/latest_books'
+>>>>>>> some models added,with some behavior,seeds.rb configured,
   .container
     .jumbotron.text-center.mb-0
       %h2.h1 Welcome to our amazing Bookstore!
       .mb-res-50
         %p We pore through hundreds of new books each month and select the five best we can find to share with our members.
       %button.btn.btn-default Get Started
+<<<<<<< HEAD
     .mb-35
       %h3 Best Sellers
       .row
@@ -120,3 +125,6 @@
               %p.title.mr-55 Ruby for Beginners
             %span.divider-sm
             %p.lead.small Yukihiro Matsumoto
+=======
+    =render partial: 'pages/partials/best_sellers'
+>>>>>>> some models added,with some behavior,seeds.rb configured,
