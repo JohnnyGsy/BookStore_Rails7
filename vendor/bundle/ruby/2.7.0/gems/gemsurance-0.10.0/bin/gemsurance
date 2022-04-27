@@ -1,7 +1,0 @@
-#!/usr/bin/env ruby
-
-require 'gemsurance'
-require 'gemsurance/cli'
-
-options = Gemsurance::Cli.parse(*ARGV)
-Gemsurance::Runner.new(options).run.report
