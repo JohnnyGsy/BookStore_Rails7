@@ -4,28 +4,7 @@ executors:
   default:
     working_directory: ~/repo
     docker:
-<<<<<<< HEAD
       - image: cimg/ruby:2.7.6
-=======
-      - image: cimg/ruby:2.7.5-node
-    steps:
-      - checkout
-      - restore_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-      - run: bundle install 
-      - run:
-          name: rubocop
-          command: bundle exec rubocop
-          
-
-  test:
-    docker:
-      - image: cimg/ruby:2.7.5-node
->>>>>>> some models added,with some behavior,seeds.rb configured,
       - image: circleci/postgres:12-alpine
         environment:
           POSTGRES_USER: johnnyGsy

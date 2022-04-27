@@ -29,11 +29,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-<<<<<<< HEAD
-=======
 coverage
 vendor
->>>>>>> some models added,with some behavior,seeds.rb configured,
 
 /.bundle
 /vendor/bundle
