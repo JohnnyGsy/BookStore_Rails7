@@ -4,6 +4,16 @@ orbs:
   ruby: circleci/ruby@1.7.1
   node: circleci/node@2
   browser-tools: circleci/browser-tools@1.2.5
+  
+commands:
+  bundle_cache:
+    steps:
+      - restore_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
 
 jobs:
   lintering:
@@ -11,12 +21,7 @@ jobs:
       - image: cimg/ruby:2.7.3-node
     steps:
       - checkout
-      - restore_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+      - bundle_cache
       - run: bundle install 
       - run:
           name: rubocop
@@ -39,12 +44,7 @@ jobs:
       RAILS_ENV: test
     steps:
       - checkout
-      - restore_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
+      - bundle_cache
       - run: bundle install 
       - browser-tools/install-chrome
       - browser-tools/install-chromedriver
