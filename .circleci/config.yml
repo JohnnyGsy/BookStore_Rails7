@@ -1,50 +1,10 @@
 version: 2.1
 
-<<<<<<< HEAD
 executors:
   default:
     working_directory: ~/repo
     docker:
       - image: cimg/ruby:2.7.6
-=======
-commands:
-  bundle_cache:
-    steps:
-      - restore_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-  
-
-jobs:
-  lintering:
-    steps:
-      - checkout
-      - bundle_cache
-      - run: bundle install 
-      - run:
-          name: rubocop
-          command: bundle exec rubocop
-      - run:
-          name: bundle audit
-          command: bundle exec bundle audit
-      - run:
-          name: rails_best_practices
-          command: bundle exec rails_best_practices  
-      - run:
-          name: brakeman
-          command: bundle exec brakeman
-      - run:
-          name: fasterer
-          command: bundle exec fasterer
-          
-
-  test:
-    docker:
-      - image: cimg/ruby:2.7.6-node
->>>>>>> cirleci fix
       - image: circleci/postgres:12-alpine
         environment:
           POSTGRES_USER: johnnyGsy
@@ -71,7 +31,6 @@ commands:
           name: brakeman
           command: bundle exec brakeman -q
       - run:
-<<<<<<< HEAD
           name: fasterer
           command: bundle exec fasterer
       - run:
@@ -84,10 +43,6 @@ commands:
 
   run_specs:
     steps:
-=======
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
->>>>>>> fixing circleci,add some linters,lefthook commands added
       - run:
           name: run specs
           command: |
@@ -99,7 +54,6 @@ commands:
   setup_environment:
     steps:
       - checkout
-<<<<<<< HEAD
       - restore_cache:
           key: *bundle_cache
       - run: bundle install --path vendor/bundle
@@ -107,16 +61,15 @@ commands:
           key: *bundle_cache
           paths:
             - vendor/bundle
-=======
-      - bundle_cache
-      - run: bundle install 
->>>>>>> cirleci fix
       - run:
           name: Set up DB
           command: |
             bundle exec rake db:create
             bundle exec rails db:schema:load
+<<<<<<< HEAD
+=======
 
+>>>>>>> fixing circleci
 jobs:
   lintering:
     executor: default
@@ -132,12 +85,7 @@ jobs:
   
 
 workflows:
-<<<<<<< HEAD
   build:
-=======
-  version: 2.1
-  lint_and_test:
->>>>>>> fixing circleci,add some linters,lefthook commands added
     jobs:
       - lintering
       - run_specs:

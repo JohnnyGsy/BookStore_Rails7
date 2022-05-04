@@ -169,11 +169,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.1)
-<<<<<<< HEAD
     kramdown (2.4.0)
-=======
-    kramdown (2.3.2)
->>>>>>> fixing circleci,add some linters,lefthook commands added
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
@@ -254,15 +250,9 @@ GEM
       json
       require_all (~> 3.0)
       ruby-progressbar
-<<<<<<< HEAD
     railties (7.0.2.4)
       actionpack (= 7.0.2.4)
       activesupport (= 7.0.2.4)
-=======
-    railties (7.0.2.3)
-      actionpack (= 7.0.2.3)
-      activesupport (= 7.0.2.3)
->>>>>>> fixing circleci,add some linters,lefthook commands added
       method_source
       rake (>= 12.2)
       thor (~> 1.0)
