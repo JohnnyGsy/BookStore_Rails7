@@ -1,10 +1,40 @@
 version: 2.1
 
+<<<<<<< HEAD
 executors:
   default:
     working_directory: ~/repo
     docker:
       - image: cimg/ruby:2.7.6
+=======
+commands:
+  bundle_cache:
+    steps:
+      - restore_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+  
+
+jobs:
+  lintering:
+    docker:
+      - image: cimg/ruby:2.7.6-node
+    steps:
+      - checkout
+      - bundle_cache
+      - run: bundle install 
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+          
+
+  test:
+    docker:
+      - image: cimg/ruby:2.7.6-node
+>>>>>>> cirleci fix
       - image: circleci/postgres:12-alpine
         environment:
           POSTGRES_USER: johnnyGsy
@@ -54,6 +84,7 @@ commands:
   setup_environment:
     steps:
       - checkout
+<<<<<<< HEAD
       - restore_cache:
           key: *bundle_cache
       - run: bundle install --path vendor/bundle
@@ -61,6 +92,10 @@ commands:
           key: *bundle_cache
           paths:
             - vendor/bundle
+=======
+      - bundle_cache
+      - run: bundle install 
+>>>>>>> cirleci fix
       - run:
           name: Set up DB
           command: |
