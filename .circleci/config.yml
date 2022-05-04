@@ -1,34 +1,8 @@
 version: 2.1
 
-commands:
-  bundle_cache:
-    steps:
-      - restore_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-      - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-          paths:
-            - vendor/bundle
-  
-jobs:
-  lintering:
-    docker:
-      - image: cimg/ruby:2.7.6
-    steps:
-      - checkout
-      - bundle_cache
-      - run: bundle install 
-      - run:
-          name: rubocop
-          command: bundle exec rubocop
-      - run:
-          name: brakeman
-          command: bundle exec brakeman
-      - run:
-          name: fasterer
-          command: bundle exec fasterer
-          
-  test:
+executors:
+  default:
+    working_directory: ~/repo
     docker:
       - image: cimg/ruby:2.7.6
       - image: circleci/postgres:12-alpine
@@ -42,23 +16,75 @@ jobs:
       PGHOST: 127.0.0.1
       BOOK_STORE_DATABASE_PASSWORD: "password"
       RAILS_ENV: test
+
+caches:
+  - &bundle_cache gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+
+commands:
+  run_linters:
+    description: command to start linters
     steps:
-      - checkout
-      - bundle_cache
-      - run: bundle install 
       - run:
-          name: Install ImageMagick
-          command: sudo apt-get install imagemagick
+          name: rubocop
+          command: bundle exec rubocop
       - run:
-          name: Database setup
-          command: bundle exec rails db:schema:load --trace
+          name: brakeman
+          command: bundle exec brakeman -q
+      - run:
+          name: fasterer
+          command: bundle exec fasterer
+      - run:
+          name: rails_best_practices
+          command: bundle exec rails_best_practices
+      - run:
+          name: bundler-audit
+          command: bundle exec bundler-audit
+
+
+  run_specs:
+    steps:
       - run:
           name: run specs
-          command: bundle exec rspec
+          command: |
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
+            bundle exec rspec --format progress \
+                              --out /tmp/test-results/rspec.xml \
+                              $TEST_FILES
+  setup_environment:
+    steps:
+      - checkout
+      - restore_cache:
+          key: *bundle_cache
+      - run: bundle install --path vendor/bundle
+      - save_cache:
+          key: *bundle_cache
+          paths:
+            - vendor/bundle
+      - run:
+          name: Set up DB
+          command: |
+            bundle exec rake db:create
+            bundle exec rails db:schema:load
+
+jobs:
+  lintering:
+    executor: default
+    steps:
+      - setup_environment
+      - run_linters
+  run_specs:
+    executor: default
+    steps:
+      - setup_environment
+      - run_specs
     parallelism: 4
+  
 
 workflows:
-  lint_and_test:
+  build:
     jobs:
       - lintering
-      - test
+      - run_specs:
+          requires:
+            - lintering
