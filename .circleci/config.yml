@@ -38,7 +38,7 @@ commands:
           command: bundle exec rails_best_practices
       - run:
           name: bundler-audit
-          command: bundle exec bundler-audit
+          command: bundle exec bundler-audit --update
 
 
   run_specs:

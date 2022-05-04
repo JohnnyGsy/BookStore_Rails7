@@ -10,7 +10,6 @@ AllCops:
     - 'script/**/*'
     - 'bin/*'
     - 'vendor/**/*'
-    - 'config/**/*'
     - 'tmp/**/*'
 
 Layout/LineLength:
