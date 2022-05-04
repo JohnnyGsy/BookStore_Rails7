@@ -1,10 +1,5 @@
 version: 2.1
 
-orbs:
-  ruby: circleci/ruby@1.7.1
-  node: circleci/node@2
-  browser-tools: circleci/browser-tools@1.2.5
-  
 commands:
   bundle_cache:
     steps:
@@ -14,11 +9,11 @@ commands:
           key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-
+  
 jobs:
   lintering:
     docker:
-      - image: cimg/ruby:2.7.3-node
+      - image: cimg/ruby:2.7.6
     steps:
       - checkout
       - bundle_cache
@@ -26,11 +21,16 @@ jobs:
       - run:
           name: rubocop
           command: bundle exec rubocop
+      - run:
+          name: brakeman
+          command: bundle exec brakeman
+      - run:
+          name: fasterer
+          command: bundle exec fasterer
           
-
   test:
     docker:
-      - image: cimg/ruby:2.7.3-node
+      - image: cimg/ruby:2.7.6
       - image: circleci/postgres:12-alpine
         environment:
           POSTGRES_USER: johnnyGsy
@@ -46,14 +46,9 @@ jobs:
       - checkout
       - bundle_cache
       - run: bundle install 
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
       - run:
           name: Install ImageMagick
           command: sudo apt-get install imagemagick
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
           command: bundle exec rails db:schema:load --trace
@@ -63,7 +58,6 @@ jobs:
     parallelism: 4
 
 workflows:
-  version: 2
   lint_and_test:
     jobs:
       - lintering

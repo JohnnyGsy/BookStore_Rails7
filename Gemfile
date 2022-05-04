@@ -3,11 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.6'
 
-gem 'aasm', '5.2.0'
-gem 'bootsnap', '1.11.1', require: false
-gem 'bootstrap-sass', '3.4.1'
-gem 'draper', '4.0.2'
-gem 'faker', '2.20.0'
 gem 'haml-rails', '2.0.1'
 gem 'importmap-rails', '1.0.3'
 gem 'jbuilder', '2.11.5'
@@ -21,8 +16,12 @@ gem 'stimulus-rails', '1.0.4'
 gem 'turbo-rails', '1.0.1	'
 
 group :development, :test do
+  gem 'bootsnap', '1.11.1', require: false
+  gem 'bootstrap-sass', '3.4.1'
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
+  gem 'draper', '4.0.2'
   gem 'factory_bot_rails', '6.2.0'
+  gem 'faker', '2.20.0'
   gem 'pry-byebug', '3.9.0'
   gem 'rspec-rails', '5.1.1'
 end
@@ -44,7 +43,6 @@ end
 
 group :test do
   gem 'capybara', '	3.36.0'
-  gem 'database_cleaner', '2.0.1'
   gem 'selenium-webdriver', '4.1.0'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '0.21.2', require: false

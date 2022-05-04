@@ -2,11 +2,10 @@ pre-commit:
     parallel: true
     commands:
       rubocop:
-        glob: "*.rb"
         run: bundle exec rubocop
       fasterer:
-        glob: "*.rb"
         run: bundle exec fasterer  
       rspec:
-        tags: rspec backend
-        run: bundle exec rspec --fail-fast
+        run: bundle exec rspec 
+      bundle audit:
+        run: bundle exec bundle audit

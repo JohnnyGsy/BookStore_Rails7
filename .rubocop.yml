@@ -10,7 +10,6 @@ AllCops:
     - 'script/**/*'
     - 'bin/*'
     - 'vendor/**/*'
-    - 'node_modules/**/*'
     - 'config/**/*'
     - 'tmp/**/*'
 

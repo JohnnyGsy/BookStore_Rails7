@@ -1,7 +1,7 @@
 require 'capybara/rspec'
 
 RSpec.configure do |config|
-  config.use_transactional_fixtures = false
+  config.use_transactional_fixtures = true
 
   config.before(:suite) do
     if config.use_transactional_fixtures?
