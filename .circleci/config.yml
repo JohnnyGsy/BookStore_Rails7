@@ -20,8 +20,6 @@ commands:
 
 jobs:
   lintering:
-    docker:
-      - image: cimg/ruby:2.7.6-node
     steps:
       - checkout
       - bundle_cache
@@ -29,6 +27,18 @@ jobs:
       - run:
           name: rubocop
           command: bundle exec rubocop
+      - run:
+          name: bundle audit
+          command: bundle exec bundle audit
+      - run:
+          name: rails_best_practices
+          command: bundle exec rails_best_practices  
+      - run:
+          name: brakeman
+          command: bundle exec brakeman
+      - run:
+          name: fasterer
+          command: bundle exec fasterer
           
 
   test:
@@ -61,6 +71,7 @@ commands:
           name: brakeman
           command: bundle exec brakeman -q
       - run:
+<<<<<<< HEAD
           name: fasterer
           command: bundle exec fasterer
       - run:
@@ -73,6 +84,10 @@ commands:
 
   run_specs:
     steps:
+=======
+          name: Database setup
+          command: bundle exec rails db:schema:load --trace
+>>>>>>> fixing circleci,add some linters,lefthook commands added
       - run:
           name: run specs
           command: |
@@ -117,7 +132,12 @@ jobs:
   
 
 workflows:
+<<<<<<< HEAD
   build:
+=======
+  version: 2.1
+  lint_and_test:
+>>>>>>> fixing circleci,add some linters,lefthook commands added
     jobs:
       - lintering
       - run_specs:

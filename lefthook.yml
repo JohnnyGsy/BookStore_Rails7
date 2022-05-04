@@ -6,6 +6,14 @@ pre-commit:
       fasterer:
         run: bundle exec fasterer  
       rspec:
+<<<<<<< HEAD
         run: bundle exec rspec 
       bundle audit:
         run: bundle exec bundle audit --update
+=======
+        tags: rspec backend
+        run: bundle exec rspec --fail-fast
+      bundle audit:
+          run: bundle exec bundle audit
+     
+>>>>>>> fixing circleci,add some linters,lefthook commands added
