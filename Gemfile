@@ -21,9 +21,11 @@ gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
 # Use Redis adapter to run Action Cable in production
 gem 'redis', '~> 4.0'
 
+# Html preprocessor
+gem 'haml-rails', '2.0.1'
+
 # Assets
 gem 'bootstrap-sass', '3.4.1'
-gem 'haml-rails', '2.0.1'
 gem 'sassc-rails', '2.1.2'
 gem 'sprockets-rails', '3.4.2'
 
