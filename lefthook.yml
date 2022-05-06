@@ -8,4 +8,4 @@ pre-commit:
       rspec:
         run: bundle exec rspec 
       bundle audit:
-        run: bundle exec bundle audit
+        run: bundle exec bundle audit --update

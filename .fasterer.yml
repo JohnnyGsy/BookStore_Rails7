@@ -3,4 +3,3 @@ exclude_paths:
   - 'db/schema.rb'
   - 'config/puma.rb'
   - 'tmp/**/*'
-  

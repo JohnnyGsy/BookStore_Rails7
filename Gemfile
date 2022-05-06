@@ -3,8 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.6'
 
-# Let you import JavaScript modules using logical names  directly from the browser.
+# Assets
+gem 'bootstrap-sass', '3.4.1'
 gem 'importmap-rails', '1.0.3'
+gem 'sassc-rails', '2.1.2'
+gem 'sprockets-rails', '3.4.2'
 
 # Declaring JSON structures
 gem 'jbuilder', '2.11.5'
@@ -23,11 +26,6 @@ gem 'redis', '~> 4.0'
 
 # Html preprocessor
 gem 'haml-rails', '2.0.1'
-
-# Assets
-gem 'bootstrap-sass', '3.4.1'
-gem 'sassc-rails', '2.1.2'
-gem 'sprockets-rails', '3.4.2'
 
 # Hotwire's modest JavaScript framework
 gem 'stimulus-rails', '1.0.4'
