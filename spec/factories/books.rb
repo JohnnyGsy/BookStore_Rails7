@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :book do
-    title { 'MyString' }
-    description { 'MyText' }
+    title { Faker::Book.title }
+    description { Faker::Lorem.paragraph_by_chars }
+    category
   end
 end

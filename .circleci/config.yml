@@ -66,10 +66,6 @@ commands:
           command: |
             bundle exec rake db:create
             bundle exec rails db:schema:load
-<<<<<<< HEAD
-=======
-
->>>>>>> fixing circleci
 jobs:
   lintering:
     executor: default

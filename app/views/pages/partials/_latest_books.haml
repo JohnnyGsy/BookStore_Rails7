@@ -1,9 +1,9 @@
 #slider.carousel.slide{'data-ride': "carousel"}
   %ol.carousel-indicators
-    - @latest_books.count.times do |index|
+    - latest_books.count.times do |index|
       %li{'class': "#{'active' if index.zero?}", 'data-target': "#slider", 'data-slide-to': "#{index}"}
   .carousel-inner{role: "listbox"}
-    - @latest_books.each_with_index do |book, index|
+    - latest_books.each_with_index do |book, index|
       .item.carousel-item{'class': "#{'active' if index.zero?}"}
         .row
           .col-sm-5
@@ -11,7 +11,7 @@
               %img.img-shadow.general-thumbnail-img{src: image_url("sample_book.jpg"), alt: "design-book"}
           .col-sm-7
             .mb-60
-              %h1.book_name 
+              %h1.book_name
                 = book.title
               %p.lead
                 = book.description
