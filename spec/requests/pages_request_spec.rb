@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe 'PagesRequest', type: :request do
   describe 'GET /index' do
     it 'returns http success' do

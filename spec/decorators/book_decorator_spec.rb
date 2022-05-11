@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe BookDecorator do
   subject(:decorator) { book.decorate }
 
@@ -7,7 +5,7 @@ RSpec.describe BookDecorator do
 
   describe '#authors_names' do
     it 'returns authors full name correctly' do
-      authors_names = book.authors.map { |author| "#{author.first_name} #{author.last_name}" }.join(', ')
+      authors_names = book.authors.map(&:full_name).join(', ')
       expect(decorator.authors_names).to eq authors_names
     end
   end
