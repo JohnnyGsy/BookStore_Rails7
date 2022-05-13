@@ -201,8 +201,10 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.4)
+    nokogiri (1.13.5)
       mini_portile2 (~> 2.8.0)
+      racc (~> 1.4)
+    nokogiri (1.13.5-x86_64-linux)
       racc (~> 1.4)
     parallel (1.22.1)
     parser (3.1.2.0)
@@ -390,6 +392,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (= 1.11.1)
@@ -419,7 +422,6 @@ DEPENDENCIES
   rubocop-rails (= 2.14.2)
   rubocop-rspec (= 2.9.0)
   sassc-rails (= 2.1.2)
-  selenium-webdriver (= 4.1.0)
   shoulda-matchers (~> 5.0)
   simplecov (= 0.21.2)
   solargraph (= 0.44.3)
