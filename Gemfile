@@ -16,8 +16,8 @@ gem 'jbuilder', '2.11.5'
 gem 'jquery-rails'
 gem 'pg', '1.3.5'
 # Puma web server
+gem 'popper_js'
 gem 'puma', '~> 5.0'
-
 # Fullstack web framework
 gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
 
