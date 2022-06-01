@@ -1,6 +1,6 @@
 = turbo_frame_tag "page_handler" do
   = turbo_stream_action_tag(          |
-      "append",                       |
+      "after",                       |
       target: "books",              |
       template: %(#{render 'books'}) |
     )                                 |

@@ -1,7 +1,7 @@
 #pager
   - if pagy.next
     .text-center
-      %button.btn.btn-primary 
+      %button.btn.btn-primary
         = link_to(                                                                     |
             "Load more",                                                       |
             books_path(page: pagy.next),                                             |
@@ -10,4 +10,3 @@
               turbo_frame: "page_handler"                                              |
             }                                                                          |
           )                                                                      |
- 

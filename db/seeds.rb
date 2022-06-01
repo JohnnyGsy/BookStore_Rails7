@@ -5,8 +5,8 @@ categories = Array.new(5) { Category.create!(name: Faker::Book.genre) }
   author_two = authors[number % authors.count]
   category = categories[number % categories.count]
   Book.create!(
-    title: Faker::Book.title, 
-    category: category, 
+    title: Faker::Book.title,
+    category: category,
     description: Faker::Lorem.paragraph_by_chars,
     quantity: Faker::Number.between(from: 1, to: 100),
     height: Faker::Number.decimal(l_digits: 2,r_digits: 1),
