@@ -5,16 +5,16 @@ ruby '2.7.6'
 
 # Assets
 gem 'bootstrap-sass', '3.4.1'
+gem 'font-awesome-rails'
 gem 'importmap-rails', '1.0.3'
+gem 'rails-i18n', '~> 7.0.0'
 gem 'sassc-rails', '2.1.2'
 gem 'sprockets-rails', '3.4.2'
-
 # Declaring JSON structures
 gem 'jbuilder', '2.11.5'
-
 # Database
 gem 'pg', '1.3.5'
-
+gem "jquery-rails"
 # Puma web server
 gem 'puma', '~> 5.0'
 
@@ -35,6 +35,12 @@ gem 'turbo-rails', '1.0.1	'
 
 # Reduces boot times through caching
 gem 'bootsnap', '1.11.1', require: false
+
+# Installed to prevent the double load of net/protocol
+gem 'net-http'
+
+# Pagination gem
+gem 'pagy', '~> 5.10'
 
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
