@@ -13,8 +13,8 @@ gem 'sprockets-rails', '3.4.2'
 # Declaring JSON structures
 gem 'jbuilder', '2.11.5'
 # Database
+gem 'jquery-rails'
 gem 'pg', '1.3.5'
-gem "jquery-rails"
 # Puma web server
 gem 'puma', '~> 5.0'
 
