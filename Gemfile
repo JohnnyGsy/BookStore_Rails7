@@ -7,17 +7,23 @@ ruby '2.7.6'
 gem 'bootstrap-sass', '3.4.1'
 gem 'font-awesome-rails'
 gem 'importmap-rails', '1.0.3'
-gem 'rails-i18n', '~> 7.0.0'
+gem 'jquery-rails'
+gem 'popper_js'
 gem 'sassc-rails', '2.1.2'
 gem 'sprockets-rails', '3.4.2'
+
+# Iternationalize and/or localize your Rails application
+gem 'rails-i18n', '~> 7.0.0'
+
 # Declaring JSON structures
 gem 'jbuilder', '2.11.5'
+
 # Database
-gem 'jquery-rails'
 gem 'pg', '1.3.5'
+
 # Puma web server
-gem 'popper_js'
 gem 'puma', '~> 5.0'
+
 # Fullstack web framework
 gem 'rails', '~> 7.0.2', '>= 7.0.2.3'
 

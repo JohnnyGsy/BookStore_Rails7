@@ -1,5 +1,5 @@
 class BookDecorator < Draper::Decorator
-  TRUNCATED_LENGTH = { description: 250 }.freeze
+  TRUNCATED_LENGTH = 250
   delegate_all
   decorates_association :authors
 
@@ -8,6 +8,6 @@ class BookDecorator < Draper::Decorator
   end
 
   def short_description
-    description.truncate(TRUNCATED_LENGTH[:description], separator: ' ')
+    description.truncate(TRUNCATED_LENGTH, separator: ' ')
   end
 end

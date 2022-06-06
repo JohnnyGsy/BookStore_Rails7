@@ -13,7 +13,6 @@ export default class extends Controller {
     this.moreButtonTarget.hidden = true
     this.longTextTarget.hidden = false
     this.lessButtonTarget.hidden = false
-    console.log('show more')
   }
 
   showLess() {
@@ -21,7 +20,6 @@ export default class extends Controller {
     this.moreButtonTarget.hidden = false
     this.longTextTarget.hidden = true
     this.lessButtonTarget.hidden = true
-    console.log('show less')
   }
  
 }

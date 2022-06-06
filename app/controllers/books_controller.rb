@@ -6,8 +6,8 @@ class BooksController < ApplicationController
   end
 
   def index
-    @pagy, @books = pagy(SortBooksService.new(params).call, items: 12)
-    @filters = SortBooksService::BOOK_FILTERS
+    @pagy, @books = pagy(SortBooks.new(params).call, items: 12)
+    @filters = SortBooks::BOOK_FILTERS
     @books_count = Book.all.count
     @categories = Category.all
   end
