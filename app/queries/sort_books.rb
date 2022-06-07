@@ -10,7 +10,7 @@ class SortBooks
 
   def initialize(params)
     @category_id = params[:category_id]
-    @filter = params[:filter]&.to_sym || BOOK_FILTERS[:created_at_desc]
+    @filter = params[:filter]&.to_sym || :created_at_desc
     @books = @category_id ? Book.where(category_id: @category_id) : Book.all
   end
 

@@ -41,16 +41,31 @@ commands:
           command: bundle exec bundler-audit --update
 
 
-  run_specs:
+   run_specs:
     steps:
-      - run:
+      - run: 
           name: run specs
+          environment:
+            - RAILS_ENV: test
           command: |
-            mkdir /tmp/test-results
             TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --format progress \
-                              --out /tmp/test-results/rspec.xml \
+            bundle exec rspec --profile 10 \
+                              --format progress \
+                              --profile \
+                              --fail-fast \
+                              -- \
                               $TEST_FILES
+
+      - attach_workspace:
+          at: .      
+      - run:
+          name: Stash Coverage Results
+          command: |
+            cp -R coverage/.resultset.json coverage_results/.resultset-${CIRCLE_NODE_INDEX}.json
+      - persist_to_workspace:
+          root: .
+          paths:
+            - coverage_results
   setup_environment:
     steps:
       - checkout
