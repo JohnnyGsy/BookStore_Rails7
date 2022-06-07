@@ -27,3 +27,9 @@ Metrics/BlockLength:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Rails/FilePath:
+  Enabled: false

@@ -40,32 +40,12 @@ commands:
           name: bundler-audit
           command: bundle exec bundler-audit --update
 
-
-   run_specs:
+  run_specs:
     steps:
-      - run: 
-          name: run specs
-          environment:
-            - RAILS_ENV: test
-          command: |
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --profile 10 \
-                              --format progress \
-                              --profile \
-                              --fail-fast \
-                              -- \
-                              $TEST_FILES
-
-      - attach_workspace:
-          at: .      
       - run:
-          name: Stash Coverage Results
-          command: |
-            cp -R coverage/.resultset.json coverage_results/.resultset-${CIRCLE_NODE_INDEX}.json
-      - persist_to_workspace:
-          root: .
-          paths:
-            - coverage_results
+          name: run specs
+          command: bundle exec rspec
+
   setup_environment:
     steps:
       - checkout
@@ -79,8 +59,9 @@ commands:
       - run:
           name: Set up DB
           command: |
-            bundle exec rake db:create
+            bundle exec rails db:create
             bundle exec rails db:schema:load
+
 jobs:
   lintering:
     executor: default
@@ -92,7 +73,6 @@ jobs:
     steps:
       - setup_environment
       - run_specs
-    parallelism: 4
   
 
 workflows:
@@ -102,4 +82,3 @@ workflows:
       - run_specs:
           requires:
             - lintering
-            
