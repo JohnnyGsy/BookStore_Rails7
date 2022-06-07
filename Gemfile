@@ -48,9 +48,10 @@ gem 'net-http'
 # Pagination gem
 gem 'pagy', '~> 5.10'
 
+gem 'draper', '4.0.2'
+
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
-  gem 'draper', '4.0.2'
   gem 'factory_bot_rails', '6.2.0'
   gem 'faker', '2.20.0'
   gem 'pry-byebug', '3.9.0'
