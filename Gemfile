@@ -58,6 +58,7 @@ group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'
   gem 'rspec-rails', '5.1.1'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
@@ -78,7 +79,6 @@ end
 
 group :test do
   gem 'capybara', '	3.36.0'
-  gem 'rspec_junit_formatter'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '0.21.2', require: false
   gem 'webdrivers', '5.0.0'
