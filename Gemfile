@@ -57,8 +57,8 @@ gem 'factory_bot_rails', '6.2.0'
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'
-  gem 'rspec-rails', '5.1.1'
   gem 'rspec_junit_formatter'
+  gem 'rspec-rails', '5.1.1'
 end
 
 group :development do
