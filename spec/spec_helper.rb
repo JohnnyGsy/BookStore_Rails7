@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.configure do |config|
   config.color = true
   config.expect_with :rspec do |expectations|
