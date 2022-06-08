@@ -1,3 +1,5 @@
+require 'faker'
+
 authors = Array.new(10) { Author.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name) }
 categories = Array.new(5) { Category.create!(name: Faker::Book.genre) }
 30.times do |number|
