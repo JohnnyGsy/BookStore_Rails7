@@ -33,3 +33,6 @@ Metrics/MethodLength:
 
 Rails/FilePath:
   Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: true

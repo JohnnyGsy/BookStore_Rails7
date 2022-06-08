@@ -22,8 +22,7 @@
               = category.name
               %span.badge.general-badge
                 = category.books.count
-      .mb-120
-        = turbo_frame_tag "page_handler"
-        #books
-          = render 'books'
-        = render "pager", pagy: @pagy
+    = turbo_frame_tag "page_handler"
+    #books
+      = render 'books'
+    = render "pager", pagy: @pagy
