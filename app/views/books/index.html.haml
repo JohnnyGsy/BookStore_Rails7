@@ -7,7 +7,7 @@
             = t("book.sort.#{params[:filter] || :created_at_desc}")
             %i.fa.fa-angle-down.dropdown-icon.pull-right
           %ul.dropdown-menu
-            - SortBooks::BOOK_FILTERS.each_key do |filter|
+            - @filters.each_key do |filter|
               %li
                 = link_to t("book.sort.#{filter}"), books_path(filter: filter)
       %ul.list-inline.pt-10.mb-25.mr-240

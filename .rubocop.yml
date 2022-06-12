@@ -36,3 +36,6 @@ Rails/FilePath:
 
 Layout/TrailingEmptyLines:
   Enabled: true
+
+RSpec/Capybara/FeatureMethods:
+    Enabled: false
