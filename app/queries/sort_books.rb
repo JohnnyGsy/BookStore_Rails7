@@ -8,9 +8,9 @@ class SortBooks
     title_desc: { title: :desc }
   }.freeze
 
-  def initialize(params, filter = :created_at_desc)
+  def initialize(params)
     @category_id = params[:category_id]
-    @filter = params[:filter]&.to_sym || filter
+    @filter = params[:filter]&.to_sym || :created_at_desc
     @books = @category_id ? Book.where(category_id: @category_id) : Book.all
   end
 
