@@ -1,3 +1,5 @@
+.text-center
+  = render partial: 'devise/shared/google_authorization'
 .general-form.field
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name), defaults: { input_html: { class: "form-control" }}) do |f|
     .form-group.mb-30

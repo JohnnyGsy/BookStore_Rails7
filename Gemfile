@@ -58,6 +58,10 @@ gem 'devise'
 
 gem 'simple_form'
 
+gem 'omniauth-google-oauth2'
+
+gem 'omniauth-rails_csrf_protection'
+
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'

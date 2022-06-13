@@ -42,3 +42,11 @@ RSpec/Capybara/FeatureMethods:
 
 RSpec/MultipleMemoizedHelpers:
   Max: 10
+RSpec/MultipleExpectations:
+  Max: 10
+
+Style/ClassAndModuleChildren:
+  Enabled: false 
+
+Metrics/AbcSize:
+  Enabled: false

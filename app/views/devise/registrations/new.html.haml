@@ -1,5 +1,7 @@
+.text-center
+  = render partial: 'devise/shared/google_authorization'
 .general-form.field
-  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), defaults: { input_html: { class: "form-control" }}) do |f|
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), defaults: { input_html: { class: "form-control" }}, data: { turbo: false }) do |f|
     .form-group.mb-30
       = f.input :email, autofocus: true, autocomplete: "email", placeholder: t('devise.email')
     .form-group.mb-30

@@ -1,0 +1,5 @@
+%h3.general-subtitle
+  = link_to user_google_oauth2_omniauth_authorize_path, class: 'general-login-icon', method: :post do
+    %i.fa.fa-google
+  %p.general-login-text
+    = t('devise.or')
