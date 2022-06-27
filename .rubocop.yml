@@ -3,7 +3,7 @@ require:
   - rubocop-performance
   - rubocop-rspec
 AllCops:
-  TargetRubyVersion: 2.7.3
+  TargetRubyVersion: 2.7.6
   NewCops: enable
   Exclude:
     - 'db/**/*'
@@ -27,3 +27,18 @@ Metrics/BlockLength:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Rails/FilePath:
+  Enabled: false
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+RSpec/Capybara/FeatureMethods:
+    Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Max: 10

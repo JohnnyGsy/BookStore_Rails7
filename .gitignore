@@ -31,6 +31,5 @@
 /config/master.key
 coverage
 vendor
-
-/.bundle
 /vendor/bundle
+/.vscode

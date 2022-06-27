@@ -5,9 +5,15 @@ ruby '2.7.6'
 
 # Assets
 gem 'bootstrap-sass', '3.4.1'
+gem 'font-awesome-rails'
 gem 'importmap-rails', '1.0.3'
+gem 'jquery-rails'
+gem 'popper_js'
 gem 'sassc-rails', '2.1.2'
 gem 'sprockets-rails', '3.4.2'
+
+# Iternationalize and/or localize your Rails application
+gem 'rails-i18n', '~> 7.0.0'
 
 # Declaring JSON structures
 gem 'jbuilder', '2.11.5'
@@ -36,12 +42,22 @@ gem 'turbo-rails', '1.0.1	'
 # Reduces boot times through caching
 gem 'bootsnap', '1.11.1', require: false
 
+# Installed to prevent the double load of net/protocol
+gem 'net-http'
+
+# Pagination gem
+gem 'pagy', '~> 5.10'
+
+gem 'draper', '4.0.2'
+
+gem 'faker', '2.20.0'
+
+gem 'factory_bot_rails', '6.2.0'
+
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
-  gem 'draper', '4.0.2'
-  gem 'factory_bot_rails', '6.2.0'
-  gem 'faker', '2.20.0'
   gem 'pry-byebug', '3.9.0'
+  gem 'rspec_junit_formatter'
   gem 'rspec-rails', '5.1.1'
 end
 

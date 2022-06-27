@@ -40,17 +40,12 @@ commands:
           name: bundler-audit
           command: bundle exec bundler-audit --update
 
-
   run_specs:
     steps:
-      - run:
+      - run: 
           name: run specs
-          command: |
-            mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-            bundle exec rspec --format progress \
-                              --out /tmp/test-results/rspec.xml \
-                              $TEST_FILES
+          command: bundle exec rspec
+
   setup_environment:
     steps:
       - checkout
@@ -64,8 +59,9 @@ commands:
       - run:
           name: Set up DB
           command: |
-            bundle exec rake db:create
+            bundle exec rails db:create
             bundle exec rails db:schema:load
+
 jobs:
   lintering:
     executor: default
@@ -77,7 +73,6 @@ jobs:
     steps:
       - setup_environment
       - run_specs
-    parallelism: 4
   
 
 workflows:
@@ -87,4 +82,3 @@ workflows:
       - run_specs:
           requires:
             - lintering
-            
