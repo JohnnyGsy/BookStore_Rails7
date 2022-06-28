@@ -3,9 +3,9 @@ RSpec.feature 'Edit', type: :feature do
     raw, enc = Devise.token_generator.generate(User, :reset_password_token)
     { raw: raw, enc: enc }
   end
+  let(:user) { create(:user) }
 
   before do
-    user = create(:user)
     user.reset_password_token = token[:enc]
     user.reset_password_sent_at = Time.now.utc
     user.save(validate: false)
@@ -15,13 +15,10 @@ RSpec.feature 'Edit', type: :feature do
   feature 'with valid input' do
     let(:valid_password) { attributes_for(:user)[:password] }
 
-    before do
+    scenario 'authorizes user and redirect to home page' do
       fill_in(I18n.t('devise.new_password'), with: valid_password)
       fill_in(I18n.t('devise.confirm_password'), with: valid_password)
       click_button(I18n.t('devise.change_password'))
-    end
-
-    scenario 'authorizes user and redirect to home page' do
       expect(page).to have_current_path(root_path)
     end
   end

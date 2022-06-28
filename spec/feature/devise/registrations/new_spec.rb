@@ -26,13 +26,11 @@ RSpec.feature 'New', type: :feature do
     before do
       fill_in(I18n.t('devise.email'), with: invalid_email)
       fill_in(I18n.t('devise.password'), with: invalid_password)
-      fill_in(I18n.t('devise.confirm_password'), with: invalid_confirmation_password)
       click_button(I18n.t('devise.sign_up'))
     end
 
     scenario 'stays at sign up page displays invalid email/password/confirmation password message' do
       expect(page).to have_current_path(user_registration_path)
-      expect(page).to have_content('is invalid')
       expect(page).to have_content('is invalid')
       expect(page).to have_content("doesn't match Password")
     end

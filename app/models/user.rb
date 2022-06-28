@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  PASSWORD_FORMAT = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])/.freeze
+  PASSWORD_FORMAT = /\A(?=.{8,}\z)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*\z/.freeze
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

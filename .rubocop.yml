@@ -13,7 +13,7 @@ AllCops:
     - 'tmp/**/*'
 
 Layout/LineLength:
-  Max: 200
+  Max: 160
 
 Style/Documentation:
   Enabled: false
@@ -42,8 +42,9 @@ RSpec/Capybara/FeatureMethods:
 
 RSpec/MultipleMemoizedHelpers:
   Max: 10
+
 RSpec/MultipleExpectations:
-  Max: 10
+  Max: 5
 
 Style/ClassAndModuleChildren:
   Enabled: false 
