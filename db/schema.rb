@@ -22,7 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_22_060312) do
     t.string "zip"
     t.string "country"
     t.string "phone"
-    t.integer "kind"
+    t.integer "address_type"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

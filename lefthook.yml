@@ -6,6 +6,4 @@ pre-commit:
       fasterer:
         run: bundle exec fasterer  
       rspec:
-        run: bundle exec rspec 
-      bundle audit:
-        run: bundle exec bundle audit --update
+        run: bundle exec rspec

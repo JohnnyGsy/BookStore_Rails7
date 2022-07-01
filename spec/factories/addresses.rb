@@ -7,7 +7,7 @@ FactoryBot.define do
     zip { 'MyString' }
     country { 'MyString' }
     phone { 'MyString' }
-    kind { 1 }
+    address_type { 1 }
     user { nil }
   end
 end

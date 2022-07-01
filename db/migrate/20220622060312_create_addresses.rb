@@ -8,7 +8,7 @@ class CreateAddresses < ActiveRecord::Migration[7.0]
       t.string :zip
       t.string :country
       t.string :phone
-      t.integer :kind
+      t.integer :address_type
       t.belongs_to :user, null: false, foreign_key: true
 
       t.timestamps
