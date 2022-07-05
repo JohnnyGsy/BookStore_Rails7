@@ -93,6 +93,7 @@ end
 
 group :test do
   gem 'capybara', '	3.36.0'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '0.21.2', require: false
   gem 'webdrivers', '5.0.0'

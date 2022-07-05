@@ -29,7 +29,7 @@ class AddressForm
   def save
     return false if invalid?
 
-    case kind
+    case address_type
     when 'billing' then user.billing_address = Address.new(params)
     when 'shipping' then user.shipping_address = Address.new(params)
     end

@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
   def update
     address_form = AddressForm.new(address_params)
     if address_form.save
-      flash[:success] = t('address.form.success', kind: address_params[:kind])
+      flash[:success] = t('address.form.success', address_type: address_params[:address_type])
     else
       flash[:danger] = address_form.errors.full_messages.to_sentence
     end
