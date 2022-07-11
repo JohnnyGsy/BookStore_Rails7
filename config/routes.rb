@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   root 'pages#index'
   resources :books, only: %i[index show]
   resource :address, only: [:update]
+  resources :reviews, only: [:create]
 end

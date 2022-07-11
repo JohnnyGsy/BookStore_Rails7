@@ -71,6 +71,9 @@ gem 'omniauth-rails_csrf_protection'
 # The administration framework for Ruby on Rails
 gem 'activeadmin'
 
+# Object oriented authorization for Rails applications
+gem 'pundit', '~> 2.2'
+
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'
