@@ -1,6 +1,6 @@
 require 'faker'
 
-authors = Array.new(10) { Author.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name) }
+authors = Array.new(10) { Author.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars,) }
 categories = Array.new(5) { Category.create!(name: Faker::Book.genre) }
 30.times do |number|
   author_one = authors[number % authors.count]
@@ -20,3 +20,4 @@ categories = Array.new(5) { Category.create!(name: Faker::Book.genre) }
     authors: [author_one, author_two]
   )
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
