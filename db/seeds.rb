@@ -1,13 +1,13 @@
 require 'faker'
 
-authors = Array.new(10) { Author.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, description: Faker::Lorem.paragraph_by_chars,) }
-categories = Array.new(5) { Category.create!(name: Faker::Book.genre) }
+authors = Array.new(10) { Author.create!(first_name: Faker::Name.unique.first_name, last_name: Faker::Name.unique.last_name, description: Faker::Lorem.unique.paragraph_by_chars,) }
+categories = Array.new(5) { Category.create!(name: Faker::Book.unique.genre) }
 30.times do |number|
   author_one = authors[number % authors.count]
   author_two = authors[number % authors.count]
   category = categories[number % categories.count]
   Book.create!(
-    title: Faker::Book.title,
+    title: Faker::Book.unique.title,
     category: category,
     description: Faker::Lorem.paragraph_by_chars,
     quantity: Faker::Number.between(from: 1, to: 100),

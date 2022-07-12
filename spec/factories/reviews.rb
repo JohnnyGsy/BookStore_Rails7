@@ -4,7 +4,7 @@ FactoryBot.define do
     title { Faker::Lorem.sentence }
     body { Faker::Lorem.paragraph_by_chars }
     status { Review.statuses[:approved] }
-    user { nil }
-    book { nil }
+    user
+    book
   end
 end
