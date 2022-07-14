@@ -74,6 +74,12 @@ gem 'activeadmin'
 # Object oriented authorization for Rails applications
 gem 'pundit', '~> 2.2'
 
+# Official AWS Ruby gem for Amazon Simple Storage Service (Amazon S3). This gem is part of the AWS SDK for Ruby.
+gem 'aws-sdk-s3', require: false
+
+# High-level wrapper for processing images for the web with ImageMagick or libvips.
+gem 'image_processing', '~> 1.0'
+
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'

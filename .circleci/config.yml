@@ -49,6 +49,9 @@ commands:
   setup_environment:
     steps:
       - checkout
+      - run:
+          name: Install ImageMagick
+          command: sudo apt-get install imagemagick
       - restore_cache:
           key: *bundle_cache
       - run: bundle install --path vendor/bundle
