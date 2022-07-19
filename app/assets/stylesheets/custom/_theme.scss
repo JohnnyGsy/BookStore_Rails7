@@ -135,6 +135,9 @@
 .navbar-inverse {
   padding-top: 30px;
   padding-bottom: 30px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 .table {
   > thead,
