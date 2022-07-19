@@ -1,6 +1,6 @@
 class BookDecorator < Draper::Decorator
   TRUNCATED_LENGTH = { description: 150,
-                       all_authors_fullname: 20,
+                       all_authors_fullname: 15,
                        title: 20 }.freeze
   delegate_all
   decorates_association :authors
