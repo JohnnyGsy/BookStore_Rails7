@@ -31,7 +31,7 @@ RSpec.feature 'New', type: :feature do
 
     scenario 'stays at sign up page displays invalid email/password/confirmation password message' do
       expect(page).to have_current_path(user_registration_path)
-      expect(page).to have_content('is invalid')
+      expect(page).to have_content('Passwordmust contain at least 1 uppercase, at least 1 lowercase, at least 1 number')
       expect(page).to have_content("doesn't match Password")
     end
   end
