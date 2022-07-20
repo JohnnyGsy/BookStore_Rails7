@@ -48,17 +48,28 @@ gem 'net-http'
 # Pagination gem
 gem 'pagy', '~> 5.10'
 
+# Adds an object-oriented layer of presentation logic to your Rails application.
 gem 'draper', '4.0.2'
 
+# A library for generating fake data
 gem 'faker', '2.20.0'
 
+# Is a fixtures replacement with a straightforward definition syntax
 gem 'factory_bot_rails', '6.2.0'
+
+# Rails forms made easy.
+gem 'simple_form'
+
+# Authentication solution for Rails
+gem 'devise'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'
   gem 'rspec_junit_formatter'
-  gem 'rspec-rails', '5.1.1'
+  gem 'rspec-rails'
 end
 
 group :development do
