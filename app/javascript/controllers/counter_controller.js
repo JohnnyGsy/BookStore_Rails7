@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 
 export default class extends Controller {
-  static targets = [ "output"  ]
+  static targets = [ "output" ]
   static values = { amount: { type: Number, default: 1 } }
 
   connect() {
