@@ -60,6 +60,9 @@ gem 'factory_bot_rails', '6.2.0'
 # Rails forms made easy.
 gem 'simple_form'
 
+# Is a collection of all sorts of useful information for every country in the ISO 3166 standard.
+gem 'countries', '~> 3.1'
+
 # Authentication solution for Rails
 gem 'devise'
 gem 'omniauth-google-oauth2'
@@ -90,6 +93,7 @@ end
 
 group :test do
   gem 'capybara', '	3.36.0'
+  gem 'rails-controller-testing'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '0.21.2', require: false
   gem 'webdrivers', '5.0.0'
