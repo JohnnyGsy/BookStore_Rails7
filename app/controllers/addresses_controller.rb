@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
+  before_action :authenticate_user!
   def update
     address_form = AddressForm.new(address_params)
-    authorize address_form, policy_class: AddressPolicy
     if address_form.save
       flash[:success] = t('address.form.success', address_type: address_params[:address_type])
     else
