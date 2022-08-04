@@ -5,6 +5,7 @@ class User < ApplicationRecord
           inverse_of: :user, class_name: 'Address', dependent: :destroy
   has_one :shipping_address, -> { shipping },
           inverse_of: :user, class_name: 'Address', dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
