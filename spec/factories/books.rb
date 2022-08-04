@@ -11,5 +11,9 @@ FactoryBot.define do
     materials { Faker::Science.element }
     authors { create_list(:author, 2) }
     category
+    title_image { Rack::Test::UploadedFile.new('app/assets/images/sample_book.jpg', 'sample_book.jpg') }
+    trait :with_images do
+      images { Rack::Test::UploadedFile.new('app/assets/images/smashing-book-5.jpg', 'smashing-book-5.jpg') }
+    end
   end
 end
