@@ -1,6 +1,0 @@
-= turbo_frame_tag "order_item_handler" do
-  = turbo_stream_action_tag(                    |
-     "append",                                  |
-     target: "order_items",                            |
-     template: %(#{render "order_items", collection: cart.order_items, as: :order_item}) |
-     )                                           |
