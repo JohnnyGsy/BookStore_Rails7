@@ -1,5 +1,10 @@
-require 'rails_helper'
-
 RSpec.describe Coupon, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'with validations' do
+    %i[sale code].each do |property|
+      it { is_expected.to validate_presence_of(property) }
+    end
+
+    it { is_expected.to validate_numericality_of(:sale).is_greater_than_or_equal_to(described_class::SALE_RANGE[:min]) }
+    it { is_expected.to validate_numericality_of(:sale).is_less_than_or_equal_to(described_class::SALE_RANGE[:max]) }
+  end
 end

@@ -7,6 +7,8 @@ class User < ApplicationRecord
           inverse_of: :user, class_name: 'Address', dependent: :destroy
   has_many :reviews, dependent: :destroy
 
+  has_many :orders, dependent: :destroy
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: [:google_oauth2]

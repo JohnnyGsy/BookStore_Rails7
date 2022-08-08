@@ -1,5 +1,9 @@
 FactoryBot.define do
   factory :order do
-    user { nil }
+    order_items { [] }
+  end
+
+  trait :with_coupon do
+    coupon
   end
 end

@@ -20,15 +20,17 @@
       .row
         .col-xs-12.col-md-4
           %h1.in-gold-500.mt-10 €#{book.price}
-        .col-xs-5.col-md-3
-          %div.input-group.general-position{ data: { controller: 'counter', value: 'counter.amount'} }
-            %a.input-link{data: { action: 'click->counter#minus'}}
-              %i.fa.fa-minus.line-height-40
-            %input.form-control.quantity-input{type: "text", data: {target: 'counter.output'}}
-            %a.input-link{data: { action: 'click->counter#plus'}}
-              %i.fa.fa-plus.line-height-40
-        .col-xs-7.col-md-5
-          %button.btn.btn-default.pull-right.general-position Add to Cart
+        = simple_form_for 'order[order_item]', url: cart_path, method: :put do |f|
+          .col-xs-5.col-md-3
+            .input-group.general-position{ data: { controller: 'counter'} }
+              %a.input-link.b-n.pt-7{data: { action: 'click->counter#minus'}}
+                %i.fa.fa-minus.line-height-40
+              = f.hidden_field :book_id, value: book.id
+              = f.text_field :quantity, class: 'form-control quantity-input input-count-book', value: 1, input_html: { 'data-counter-target': 'output'}
+              %a.b-n.input-link{data: { action: 'click->counter#plus'}}
+                %i.fa.fa-plus.line-height-40
+          .col-xs-7.col-md-5
+            = f.button :submit, t('button.add_to_cart'), class: 'btn btn-default pull-right general-position'        
       .general-info-wrap.divider-lg
         %p Description
         %div.lead.small.line-height-2{ data: { controller: 'descriprion'} }

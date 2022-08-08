@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :order_item do
-    book { nil }
-    order { nil }
-    quantity { 1 }
+    book
+    order
+    quantity { Faker::Number.between(from: 2, to: 10) }
   end
 end
