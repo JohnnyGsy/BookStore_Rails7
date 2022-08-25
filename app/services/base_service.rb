@@ -1,8 +1,8 @@
 class BaseService
   attr_reader :errors, :success_message
 
-  def self.call(**params)
-    service = new(**params)
+  def self.call(**kwargs)
+    service = new(**kwargs)
     service.call
     service
   end
