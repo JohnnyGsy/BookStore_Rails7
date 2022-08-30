@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   def current_cart
     return Order.find(session[:cart_id]) if session[:cart_id]
 
-    cart = Order.create
+    cart = Cart::CurrentCartService.new(current_user).call
     session[:cart_id] = cart.id
     cart
   end

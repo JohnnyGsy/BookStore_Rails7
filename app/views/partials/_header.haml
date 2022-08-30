@@ -5,12 +5,13 @@
         %span.sr-only
         %span.icon-bar
       = link_to t('layout.title'), root_path, class: 'navbar-brand'
-      %a.shop-link.pull-right.visible-xs{href: "#"}
+    %a.shop-link.pull-right.hidden-xs{href: cart_path}
+      -if user_signed_in? || session[:cart_id]
         %span.shop-icon
           %span.shop-quantity= cart_items_count
-    %a.shop-link.pull-right.hidden-xs{href: cart_path}
-      %span.shop-icon
-        %span.shop-quantity= cart_items_count
+      - else 
+        %span.shop-icon
+          %span.shop-quantity= 0
     #navbar.navbar-collapse.collapse.pl-30{'aria-expanded': "false"}
       .hidden-xs
         %ul.nav.navbar-nav
