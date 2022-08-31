@@ -6,10 +6,16 @@ module Cart
 
     def call
       if @current_user
-        Order.user_pending_order(@current_user).exists? ? Order.user_pending_order(@current_user).first : Order.create(user_id: @current_user.id)
+        user_pending_order || Order.create(user_id: @current_user.id)
       else
         Order.create
       end
+    end
+
+    private
+
+    def user_pending_order
+      Order.where(status: :pending, user_id: @current_user.id).first
     end
   end
 end

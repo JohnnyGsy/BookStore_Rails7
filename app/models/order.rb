@@ -7,6 +7,4 @@ class Order < ApplicationRecord
   has_one :coupon, dependent: :destroy
 
   enum status: { pending: 0, complete: 1 }, _default: 0
-
-  scope :user_pending_order, ->(current_user) { where(status: :pending, user_id: current_user.id) }
 end
