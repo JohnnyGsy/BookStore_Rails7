@@ -52,3 +52,6 @@ Style/ClassAndModuleChildren:
 
 Metrics/AbcSize:
   Enabled: false
+
+RSpec/NestedGroups:
+  Max: 4

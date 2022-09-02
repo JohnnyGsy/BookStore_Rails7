@@ -8,6 +8,6 @@ RSpec.describe Address, type: :model do
   end
 
   context 'with associations' do
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:addressable) }
   end
 end

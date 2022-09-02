@@ -2,10 +2,13 @@ class User < ApplicationRecord
   PASSWORD_FORMAT = /\A(?=.{8,}\z)(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).*\z/.freeze
 
   has_one :billing_address, -> { billing },
-          inverse_of: :user, class_name: 'Address', dependent: :destroy
+          inverse_of: :addressable, as: :addressable, class_name: 'Address', dependent: :destroy
   has_one :shipping_address, -> { shipping },
-          inverse_of: :user, class_name: 'Address', dependent: :destroy
+          inverse_of: :addressable, as: :addressable, class_name: 'Address', dependent: :destroy
+
   has_many :reviews, dependent: :destroy
+
+  has_many :orders, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

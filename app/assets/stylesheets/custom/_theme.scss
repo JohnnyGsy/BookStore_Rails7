@@ -264,6 +264,10 @@
     color: $grey-350
   }
 }
+.button_to,
+.button_to div {
+  display: inline;
+}
 .quantity-input {
   max-width: 40px;
   text-align: center;
