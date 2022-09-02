@@ -6,5 +6,6 @@ class Order < ApplicationRecord
 
   has_one :coupon, dependent: :destroy
 
-  enum status: { pending: 0, complete: 1 }, _default: 0
+  enum status: { address: 0, delivery: 1, payment: 2, confirm: 3, checkout_complete: 4,
+                 in_delivery: 5, delivered: 6, canceled: 7 }
 end

@@ -65,10 +65,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_064100) do
     t.string "country"
     t.string "phone"
     t.integer "address_type"
-    t.bigint "user_id", null: false
+    t.string "addressable_type"
+    t.bigint "addressable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -188,7 +189,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_064100) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "users"
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
   add_foreign_key "coupons", "orders"

@@ -11,11 +11,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_cart
-    return Order.find(session[:cart_id]) if session[:cart_id]
-
-    cart = Cart::CurrentCartService.new(current_user).call
-    session[:cart_id] = cart.id
-    cart
+    @current_cart || @current_cart = Cart::CurrentCartService.new(session, current_user).call
+    session[:cart_id] = @current_cart.id
+    @current_cart
   end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
