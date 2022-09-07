@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_064100) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_30_100941) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -117,6 +117,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_064100) do
     t.index ["category_id"], name: "index_books_on_category_id"
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.string "number"
+    t.string "name"
+    t.string "expiry_date"
+    t.integer "cvv"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_cards_on_order_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -131,6 +142,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_064100) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_coupons_on_order_id"
+  end
+
+  create_table "delivery_types", force: :cascade do |t|
+    t.string "name"
+    t.integer "min_days"
+    t.integer "max_days"
+    t.decimal "price", precision: 5, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_delivery_types", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "delivery_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["delivery_type_id"], name: "index_order_delivery_types_on_delivery_type_id"
+    t.index ["order_id"], name: "index_order_delivery_types_on_order_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -191,7 +220,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_064100) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "author_books", "authors"
   add_foreign_key "author_books", "books"
+  add_foreign_key "cards", "orders"
   add_foreign_key "coupons", "orders"
+  add_foreign_key "order_delivery_types", "delivery_types"
+  add_foreign_key "order_delivery_types", "orders"
   add_foreign_key "order_items", "books"
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"

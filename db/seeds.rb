@@ -25,3 +25,11 @@ categories = Array.new(5) { Category.create!(name: Faker::Book.unique.genre) }
   end
 end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+3.times do
+  DeliveryType.create(
+    name: Faker::Subscription.plan,
+    min_days: Faker::Number.between(from: 1, to: 5),
+    max_days: Faker::Number.between(from: 7, to: 15),
+    price: Faker::Number.decimal(l_digits: 2))
+end

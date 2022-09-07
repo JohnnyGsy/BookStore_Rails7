@@ -80,6 +80,12 @@ gem 'aws-sdk-s3', require: false
 # High-level wrapper for processing images for the web with ImageMagick or libvips.
 gem 'image_processing', '~> 1.0'
 
+# AASM - Ruby state machines
+gem 'aasm'
+
+# Allows to use ActiveRecord transactional callbacks outside of ActiveRecord models, literally everywhere in your application.
+gem 'after_commit_everywhere', '~> 1.0'
+
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'
