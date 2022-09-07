@@ -42,7 +42,7 @@ RSpec.describe OrderDecorator do
 
       before { decorated_order.coupon = coupon }
 
-      it { is_expected.to eq(expected_result) }
+      it { is_expected.to eq(-expected_result) }
     end
 
     context 'without coupon' do

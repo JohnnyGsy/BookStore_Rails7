@@ -1,1 +1,10 @@
 %main.container
+  %h1.general-title-margin= t('checkouts.checkout')
+  %ul.steps.list-inline.list-center
+    - @order.order_checkout_statuses.each_with_index do |status, index|
+      %li.step{class: ("active" if @order.passed_status?(status)) }
+        %span.step-number= @order.status_done?(status) ? '✓' : index + 1
+        %span.step-text.hidden-xs= t("checkouts.#{status}.#{status}")
+      - unless @order.last_status?(index)
+        %li.step-divider
+  = render partial: "checkouts/partials/#{@order.status}"
