@@ -2,7 +2,7 @@ class AddressesController < ApplicationController
   before_action :authenticate_user!
   def update
     address_form = AddressForm.new(address_params)
-    if address_form.save
+    if address_form.save(current_user)
       flash[:success] = t('address.form.success', address_type: address_params[:address_type])
     else
       flash[:danger] = address_form.errors.full_messages.to_sentence
