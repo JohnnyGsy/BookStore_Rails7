@@ -26,12 +26,12 @@ class AddressForm
   validate :country_code_of_the_selected_country
   validate :country_from_the_above
 
-  def save
+  def save(object)
     return false if invalid?
 
     case address_type
-    when 'billing' then user.billing_address = Address.new(params)
-    when 'shipping' then user.shipping_address = Address.new(params)
+    when 'billing' then object.billing_address = Address.new(params)
+    when 'shipping' then object.shipping_address = Address.new(params)
     end
   end
 
