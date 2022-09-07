@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  include AASM
+
   belongs_to :user, optional: true
 
   has_many :order_items, dependent: :destroy
@@ -6,6 +8,36 @@ class Order < ApplicationRecord
 
   has_one :coupon, dependent: :destroy
 
+  has_one :billing_address, -> { billing },
+          inverse_of: :addressable, as: :addressable, class_name: 'Address', dependent: :destroy
+  has_one :shipping_address, -> { shipping },
+          inverse_of: :addressable, as: :addressable, class_name: 'Address', dependent: :destroy
+
+  has_one :order_delivery_type, dependent: :destroy
+  has_one :delivery_type, through: :order_delivery_type
+  has_one :card, dependent: :destroy
+
   enum status: { address: 0, delivery: 1, payment: 2, confirm: 3, checkout_complete: 4,
                  in_delivery: 5, delivered: 6, canceled: 7 }
+
+  scope :in_progress, -> { where(status: %i[address delivery payment confirm checkout_complete in_delivery]) }
+  scope :in_queue, -> { where(status: :checkout_complete) }
+  scope :in_delivery, -> { where(status: :in_delivery) }
+  scope :delivered, -> { where(status: :delivered) }
+  scope :canceled, -> { where(status: :canceled) }
+  scope :checkout_finished, -> { where(status: %i[checkout_complete in_delivery delivered canceled]) }
+
+  aasm column: :status, enum: true do
+    state :address, initial: true
+    state :delivery, :payment, :confirm, :checkout_complete,
+          :in_delivery, :delivered, :canceled
+
+    event(:delivery_step) { transitions from: :address, to: :delivery }
+    event(:payment_step) { transitions from: :delivery, to: :payment }
+    event(:confirm_step) { transitions from: :payment, to: :confirm }
+    event(:complete_step) { transitions from: :confirm, to: :checkout_complete }
+    event(:in_delivery_step) { transitions from: :checkout_complete, to: :in_delivery }
+    event(:delivered_step) { transitions from: :in_delivery, to: :delivered }
+    event(:canceled_step) { transitions from: %i[checkout_complete in_delivery delivered], to: :canceled }
+  end
 end
