@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Orders
   class ChangeOrderStatusService < BaseService
     attr_reader :completed_order

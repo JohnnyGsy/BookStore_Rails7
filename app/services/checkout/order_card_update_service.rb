@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Checkout
   class OrderCardUpdateService < BaseService
     def initialize(params)
