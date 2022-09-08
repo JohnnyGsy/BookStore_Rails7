@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@1.0.1
+
 executors:
   default:
     working_directory: ~/repo
@@ -49,6 +52,8 @@ commands:
   setup_environment:
     steps:
       - checkout
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
       - run:
           name: Install ImageMagick
           command: sudo apt-get install imagemagick
