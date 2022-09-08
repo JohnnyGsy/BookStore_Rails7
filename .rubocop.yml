@@ -61,3 +61,6 @@ RSpec/RepeatedExampleGroupBody:
 
 RSpec/RepeatedExampleGroupDescription:
   Enabled: false 
+
+RSpec/LetSetup:
+  Enabled: false 

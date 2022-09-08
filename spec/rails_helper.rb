@@ -1,6 +1,7 @@
 require 'spec_helper'
 require 'pundit/rspec'
-require 'webdrivers/geckodriver'
+require 'rack_session_access/capybara'
+require 'webdrivers'
 require_relative '../config/environment'
 
 abort('The Rails environment is running in production mode!') if Rails.env.production?

@@ -89,6 +89,7 @@ gem 'after_commit_everywhere', '~> 1.0'
 group :development, :test do
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
   gem 'pry-byebug', '3.9.0'
+  gem 'rack_session_access'
   gem 'rspec_junit_formatter'
   gem 'rspec-rails'
 end
@@ -115,5 +116,5 @@ group :test do
   gem 'selenium-webdriver', '~> 4.1.0'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', '0.21.2', require: false
-  gem 'webdrivers', '5.0.0'
+  gem 'webdrivers', '~> 5'
 end
